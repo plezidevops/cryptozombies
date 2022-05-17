@@ -42,4 +42,12 @@ contract ZombieFactory {
         uint rand = uint(keccak256(abi.encodePacked(_str)));
         return rand % dnaModulus;
     }
+
+    // createRandomZombie creates and stored random zombie on the blockchain database
+    function createRandomZombie(string memory _name) public {
+        // making sure user's call this function once
+        require(ownerZombieCount[msg.sender] == 0);
+        uint randDna = _generateRandomDna(_name);
+        _createZombie(_name, randDna);
+    }
 }
