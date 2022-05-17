@@ -35,7 +35,7 @@ contract ZombieFactory {
         return rand % dnaModulus;
     }
 
-    // createRandomZombie creates a zombie with random DNA
+    // createRandomZombie creates and stored random zombie on the blockchain database
     function createRandomZombie(string memory _name) public {
         uint ranDna = _generateRandomDna(_name);
         _createZombie(_name, ranDna);
